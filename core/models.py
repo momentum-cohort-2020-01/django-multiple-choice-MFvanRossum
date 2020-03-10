@@ -9,6 +9,7 @@ class Snippet(models.Model):
     language = models.CharField(max_length=30)
     code = models.TextField(max_length=None)
     created_at = models.DateField(auto_now=True)
+    # tag = models.ManyToManyField(Tag, related_name="tag")
 
     def __str__(self):
         return f'{self.code}'

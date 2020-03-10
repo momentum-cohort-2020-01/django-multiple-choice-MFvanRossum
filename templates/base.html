@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     {% block title %}<title>Snip-It</title>{% endblock %}
 </head>
 
-<header>
-
+<header class="header">
+    <h1 class="site">
+        Snip-It! 
+    </h1>
+    <div class="login-out-container">
+        <a class="login-logout" href="/accounts/login/">Login |</a>
+        <a class="login-logout" href="/accounts/logout">Logout </a>
+    </div>
+    <div class="site-search">
+        <input type="text" placeholder="Search Snip-It!">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="user-profile">
+        <img class="avatar" src='{{request.user.avatar.url}}'>
+        <div class="profile">{{request.user.username}}</div>
+    <div class="library-button">
+        | Library 
+    </div>
+    </div>
 </header>
 
 <body>

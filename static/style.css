@@ -3,3 +3,73 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: #393E41;
+}
+
+a {
+    color: black;
+    text-emphasis: none;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header {
+    background-color: #5C415D;
+    border-bottom: 5px solid rgb(69, 49, 70); 
+    max-height: max-content;
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+    contain: content;
+}
+
+.site {
+    display: flex;
+    font-family: 'Fredoka One';
+    font-size: 50px;
+    text-shadow: 1px 2px white;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: #393E41;
+}
+
+.login-logout {
+    margin: 2px;
+}
+
+.login-out-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-profile {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.library-button {
+    display: inline-block;
+}
+
+.site-search {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 1;
+    right: 0;
+    margin-right: 5px;
+}
+
+.site-search input {
+    width: 200px;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.site-search button {
+    width: 20px;
+}
