@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 class Snippet(models.Model):
     title = models.CharField(max_length=200)
-    user = models.ManyToManyField(User, related_name="user")
+    users = models.ManyToManyField(User, related_name="user")
     description = models.TextField(max_length=None)
     language = models.CharField(max_length=30)
     code = models.TextField(max_length=None)

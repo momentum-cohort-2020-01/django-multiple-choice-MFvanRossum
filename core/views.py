@@ -18,6 +18,7 @@ def new_snippet(request):
         form = SnippetForm(request.POST)
         if form.is_valid():
             snippet = form.save()
+            snippet.users.add(request.user)
             return redirect('profile')
     else:
             form = SnippetForm()

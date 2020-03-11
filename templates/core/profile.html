@@ -2,18 +2,24 @@
 {% block content %}
 
 <body>
-<h1>{{request.user.username}}</h1>
+<h1 class="profile-name">{{request.user.username}}</h1>
 <div class="container">
-    <a class="new-snippet-button" href="{% url 'new-snippet' %}">
+    <div class="profile-search">
+        <input type="text" placeholder="Search {{user.username}}&#39s snippets!">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
         <div>
-            <h3>New Snippet +</h3>
+            <h3 class="new-snippet-button">
+                <a href="{% url 'new-snippet' %}">
+                    New Snippet +
+                </a>
+            </h3>
         </div>
-    </a>
     {% for snippet in snippets %}
     <div class="snippet-container">
         <h2 class="snippet-title">{{snippet.title}}</h2>
         <div class="code-snippet">
-            <pre><code class="language-none">{{snippet.code}}</code></pre>
+            <pre><code class="language-{{snippet.language}}">{{snippet.code}}</code></pre>
         </div>
         <div class="language">
             {{snippet.language}}
@@ -22,8 +28,15 @@
             {{snippet.description}}
         </div>
         <div class="created-by">
-            Posted on: {{snippet.created_at}} by <a href="{% url 'profile' %}">{{snippet.user}}</a>
+            Posted on: {{snippet.created_at}} by 
+            <a href="{% url 'profile' %}">
+            {% for user in snippet.users.all %}
+            {{user.username}}
+            {% endfor %}
+        </a>
+
         </div>
+    <hr>
     </div>
     {% endfor %}
 </div>
