@@ -16,6 +16,7 @@ werkzeug = "*"
 django-environ = "*"
 django-registration-redux = "*"
 pillow = "*"
+prismjs = "*"
 
 [requires]
 python_version = "3.7"

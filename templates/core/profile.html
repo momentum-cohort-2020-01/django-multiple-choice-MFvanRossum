@@ -1,4 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<body>
+<h1>{{request.user.username}}</h1>
+<div class="container">
+    <a class="new-snippet-button" href="{% url 'new-snippet' %}">
+        <div>
+            <h3>New Snippet +</h3>
+        </div>
+    </a>
+    {% for snippet in snippets %}
+    <div class="snippet-container">
+        <h2 class="snippet-title">{{snippet.title}}</h2>
+        <div class="code-snippet">
+            <pre><code class="language-none">{{snippet.code}}</code></pre>
+        </div>
+        <div class="language">
+            {{snippet.language}}
+        </div>
+        <div class="description">
+            {{snippet.description}}
+        </div>
+        <div class="created-by">
+            Posted on: {{snippet.created_at}} by <a href="{% url 'profile' %}">{{snippet.user}}</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
 {% endblock %}

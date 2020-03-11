@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET, require_POST
 from django.http import HttpResponse, JsonResponse
 from .models import Snippet, Tag
+from .forms import SnippetForm
 from users.models import User
 # from .forms import ...
 
@@ -18,6 +19,6 @@ def new_snippet(request):
         if form.is_valid():
             snippet = form.save()
             return redirect('profile')
-        else:
+    else:
             form = SnippetForm()
-        return render(request, 'core/new_snippet.html', {'form': form, 'snippets': snippets})
+    return render(request, 'core/new_snippet.html', {'form': form, 'snippets': snippets})
