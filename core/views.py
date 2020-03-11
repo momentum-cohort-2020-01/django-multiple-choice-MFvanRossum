@@ -10,3 +10,14 @@ from users.models import User
 def profile(request):
     snippets = Snippet.objects.all()
     return render(request, 'core/profile.html', {'snippets': snippets})
+
+def new_snippet(request):
+    snippets = Snippet.objects.all()
+    if request.method == "POST":
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            snippet = form.save()
+            return redirect('profile')
+        else:
+            form = SnippetForm()
+        return render(request, 'core/new_snippet.html', {'form': form, 'snippets': snippets})
