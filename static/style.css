@@ -6,10 +6,12 @@
 
 body {
     background-color: #393E41;
+    font-family: 'Baloo Da 2';
+    color: rgb(173, 173, 173);
 }
 
 a {
-    color: black;
+    color: rgb(173, 173, 173);
     text-emphasis: none;
     text-decoration: none;
 }
@@ -30,11 +32,12 @@ a:hover {
 
 .site {
     display: flex;
+    color: black;
     font-family: 'Fredoka One';
-    font-size: 50px;
+    font-size: 60px;
     text-shadow: 1px 2px white;
     -webkit-text-stroke-width: 0.1px;
-    -webkit-text-stroke-color: #393E41;
+    -webkit-text-stroke-color: rgb(96, 103, 107);
 }
 
 .login-logout {
@@ -44,11 +47,28 @@ a:hover {
 .login-out-container {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .user-profile {
-    display: flex;
-    justify-content: flex-start;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.avatar {
+    max-width: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(158, 158, 158);
+}
+
+.user-profile:hover .avatar{
+    max-width: 55px;
+}
+
+.profile {
+    text-align: end;
 }
 
 .library-button {
@@ -59,7 +79,7 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    bottom: 1;
+    bottom: 5px;
     right: 0;
     margin-right: 5px;
 }
