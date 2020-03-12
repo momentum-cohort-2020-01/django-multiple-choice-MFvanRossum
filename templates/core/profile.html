@@ -29,12 +29,16 @@
         </div>
         <div class="created-by">
             Posted on: {{snippet.created_at}} by 
-            <a href="{% url 'profile' %}">
+            <a class="header-button" href="{% url 'profile' %}">
             {% for user in snippet.users.all %}
             {{user.username}}
             {% endfor %}
-        </a>
-
+            </a>
+        </div>
+        <div class="edit-delete">
+            <a class="header-button" href="{% url 'edit-snippet' pk=snippet.pk %}">Edit Snippet |</a>
+            <a class="header-button" href="{% url 'delete-snippet' pk=snippet.pk %}"
+               onclick="return confirm('Are you sure you want to delete this snippet?')">Delete Snippet</a>
         </div>
     <hr>
     </div>

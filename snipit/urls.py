@@ -24,6 +24,8 @@ urlpatterns = [
     path('', views.profile, name = 'profile'),
     path('accounts/', include('registration.backends.default.urls'), name = 'login'),
     path('snippets/new/', views.new_snippet, name = 'new-snippet'),
+    path('snippets/edit/<int:pk>', views.edit_snippet, name='edit-snippet'),
+    path('snippets/delete/<int:pk>', views.delete_snippet, name = 'delete-snippet'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

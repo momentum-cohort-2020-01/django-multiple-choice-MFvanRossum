@@ -155,6 +155,7 @@ hr {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+    contain: content;
 }
 
 .language {
@@ -165,4 +166,31 @@ hr {
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 15px;
+}
+
+.edit-delete {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.form-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: max-content;
+    contain: content;
+    border: 1px solid rgb(78, 78, 78);
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(90, 98, 102);
+}
+
+.new-snippet-head {
+    font-family: 'Bebas Neue';
+    margin-left: 25px;
+}
+
+.form .button {
+    margin-left: 225px;
 }

@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from .models import Snippet, Tag
 from .forms import SnippetForm
 from users.models import User
-# from .forms import ...
 
 @login_required
 def profile(request):
@@ -23,3 +22,19 @@ def new_snippet(request):
     else:
             form = SnippetForm()
     return render(request, 'core/new_snippet.html', {'form': form, 'snippets': snippets})
+
+def edit_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    if request.method == 'POST':
+        form = SnippetForm(request.POST, instance=snippet)
+        if form.is_valid():
+            snippet = form.save()
+            return redirect('profile')
+    else:
+        form = SnippetForm(instance=snippet)
+    return render(request, 'core/edit_snippet.html', {'snippet': snippet, 'form':form, 'pk': pk})
+
+def delete_snippet(request, pk):
+    snippet = get_object_or_404(Snippet, pk=pk)
+    snippet.delete()
+    return redirect ('profile')
