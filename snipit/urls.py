@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.profile, name = 'profile'),
-    path('accounts/', include('registration.backends.default.urls'), name = 'login'),
+    path('accounts/', include('registration.backends.simple.urls'), name='login'),
+    # path('accounts/', include('registration.backends.default.urls'), name = 'login'),
     path('snippets/new/', views.new_snippet, name = 'new-snippet'),
     path('snippets/edit/<int:pk>', views.edit_snippet, name='edit-snippet'),
     path('snippets/delete/<int:pk>', views.delete_snippet, name = 'delete-snippet'),

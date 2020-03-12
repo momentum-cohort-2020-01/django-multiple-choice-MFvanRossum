@@ -138,10 +138,10 @@ MEDIA_URL = '/media/'
 
 # Registration
 REGISTRATION_FORM = 'users.forms.CustomRegistrationForm'
-ACCOUNT_ACTIVATION_DAYS = 7
+# ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Custom user model
 
