@@ -16,7 +16,8 @@ werkzeug = "*"
 django-environ = "*"
 django-registration-redux = "*"
 pillow = "*"
-prismjs = "*"
+psycopg2 = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"
