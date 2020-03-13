@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'snipit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<dbname>',
-        'USER': '<username>',
+        'NAME': 'core',
+        'USER': 'snipit',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
