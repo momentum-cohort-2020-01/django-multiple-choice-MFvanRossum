@@ -94,7 +94,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'snipit',
-        'USER': 'core',
+        'USER': 'snipit',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
