@@ -158,6 +158,24 @@ hr {
     contain: content;
 }
 
+.code-snippet {
+    display: flex;
+}
+
+
+.code-snippet i {
+    margin: 10px;
+    margin-left: 2px;
+    padding: 3px;
+    border-radius: 5px;
+    height: max-content;
+}
+
+.code-snippet i:hover {
+    cursor: pointer;
+    background-color: rgb(45, 49, 51);
+}
+
 .language {
     width: max-content;
     height: max-content;
