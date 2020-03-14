@@ -5,11 +5,29 @@ from django.http import HttpResponse, JsonResponse
 from .models import Snippet, Tag
 from .forms import SnippetForm
 from users.models import User
+from django.db.models import Q
+
+# @login_required
+# def profile(request):
+#     snippets = Snippet.objects.all()
+#     return render(request, 'core/profile.html', {'snippets': snippets})
 
 @login_required
 def profile(request):
-    snippets = Snippet.objects.all()
-    return render(request, 'core/profile.html', {'snippets': snippets})
+    def create_db_query(query_string):
+        query_terms = query_string.split(" ")
+        db_query = Q()
+        for term in query_terms:
+            db_query = db_query | Q(title__icontains=term) | Q(language__icontains=term)
+        return db_query
+    query = request.GET.get('q')
+    if query:
+        snippets = Snippet.objects.filter(create_db_query(query))
+    else:
+        snippets = Snippet.objects.all()
+    context = {'snippets': snippets}
+    context['query'] = str(query)
+    return render(request, 'core/profile.html', context=context)
 
 def new_snippet(request):
     snippets = Snippet.objects.all()

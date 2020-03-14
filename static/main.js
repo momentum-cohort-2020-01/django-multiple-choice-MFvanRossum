@@ -14,20 +14,23 @@
 // }
 
 function copy_to_clipboard() {
-    let clipboardButton = document.querySelector('.fa-clipboard');
-    clipboardButton.addEventListener('click', function(event) {
-        let snippet = document.querySelector('code');
-        let range = document.createRange();
-        range.selectNode(snippet);
-        window.getSelection().addRange(range);
-        try {
-            let successful = document.execCommand('copy');
-            let msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copy snippet command was ' + msg);
-        } catch(err) {
-            console.log('Sorry, unable to copy snippet');
-        } window.getSelection().removeAllRanges();
-    })
+    const buttons = document.querySelectorAll('.fa-clipboard');
+    for (const button of buttons) {
+        button.addEventListener('click', function(event) {
+            const parent = event.target.closest('.code-snippet');
+            const snippet = parent.querySelector('code');
+            const range = document.createRange();
+            range.selectNode(snippet);
+            window.getSelection().addRange(range);
+            try {
+                const successful = document.execCommand('copy');
+                const msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copy snippet command was ' + msg);
+            } catch(err) {
+                console.log('Sorry, unable to copy snippet');
+            } window.getSelection().removeAllRanges();
+        })
+    }   
 }
 
 document.addEventListener('DOMContentLoaded', function(){

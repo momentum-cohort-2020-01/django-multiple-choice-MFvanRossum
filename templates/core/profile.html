@@ -5,8 +5,10 @@
 <h1 class="profile-name">{{request.user.username}}</h1>
 <div class="container">
     <div class="profile-search">
-        <input type="text" placeholder="Search {{user.username}}&#39s snippets!">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <form action="" method="GET" id="search-form">
+            <input type="text" name="q" placeholder="Search {{user.username}}&#39s snippets!">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
         <div>
             <h3 class="new-snippet-button">
