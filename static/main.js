@@ -14,17 +14,18 @@
 // }
 
 function copy_to_clipboard() {
-    const buttons = document.querySelectorAll('.fa-clipboard');
-    for (const button of buttons) {
+    let buttons = document.querySelectorAll('.fa-clipboard');
+    for (let button of buttons) {
         button.addEventListener('click', function(event) {
-            const parent = event.target.closest('.code-snippet');
-            const snippet = parent.querySelector('code');
-            const range = document.createRange();
+            let parent = event.target.closest('.code-snippet');
+            let snippet = parent.querySelector('code');
+            let range = document.createRange();
             range.selectNode(snippet);
+            window.getSelection().removeAllRanges();
             window.getSelection().addRange(range);
             try {
-                const successful = document.execCommand('copy');
-                const msg = successful ? 'successful' : 'unsuccessful';
+                let successful = document.execCommand('copy');
+                let msg = successful ? 'successful' : 'unsuccessful';
                 console.log('Copy snippet command was ' + msg);
             } catch(err) {
                 console.log('Sorry, unable to copy snippet');
