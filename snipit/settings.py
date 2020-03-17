@@ -30,9 +30,7 @@ BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-in_production = bool(os.getenv('PRODUCTION'))
-DEBUG = not in_production
-
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -90,16 +88,7 @@ WSGI_APPLICATION = 'snipit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'snipit',
-        'USER': 'snipit',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
-
+DATABASES = {'default': env.db()}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -152,7 +141,7 @@ REGISTRATION_FORM = 'users.forms.CustomRegistrationForm'
 # ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Custom user model
 
@@ -169,4 +158,4 @@ INTERNAL_IPS = [
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
