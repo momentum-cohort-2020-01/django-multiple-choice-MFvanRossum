@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <h1 class="profile-name">Snip-It! Code Library</h1>
+    <h3 class="library-des">Search for snippets by title, description, code, <br>
+        language, or user!</h3>
+    {% for snippet in snippets %}
+        <div class="snippet-container">
+            <h2 class="snippet-title">{{snippet.title}}</h2>
+            <div class="code-snippet">
+                <pre><code class="language-{{snippet.language}}">{{snippet.code}}</code></pre>
+                <i class="fas fa-clipboard"></i>
+            </div>
+            <div class="language">
+                {{snippet.language}}
+            </div>
+            <div class="description">
+                {{snippet.description}}
+            </div>
+            <div class="created-by">
+                Posted on: {{snippet.created_at}} by 
+                <a class="header-button" href="{% url 'profile' %}">
+                {% for user in snippet.users.all %}
+                {{user.username}}
+                {% endfor %}
+                </a>
+            </div>
+        <hr>
+        </div>
+    {% endfor %}
+</body>
+
+{% endblock %}

@@ -51,3 +51,7 @@ def delete_snippet(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     snippet.delete()
     return redirect ('profile')
+
+def library(request):
+    snippets = Snippet.objects.all()
+    return render(request, 'core/library.html', {'snippets': snippets})

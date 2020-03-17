@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.profile, name = 'profile'),
+    path('snippets/library/', views.library, name='library'),
     path('accounts/', include('registration.backends.simple.urls'), name='login'),
     # path('accounts/', include('registration.backends.default.urls'), name = 'login'),
     path('snippets/new/', views.new_snippet, name = 'new-snippet'),

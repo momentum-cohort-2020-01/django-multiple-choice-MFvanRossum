@@ -84,6 +84,12 @@ hr {
     display: inline-block;
 }
 
+.library-des {
+    font-family: 'Bebas Neue';
+    font-style: italic;
+    margin-left: 35px;
+}
+
 .site-search {
     display: flex;
     justify-content: flex-end;
@@ -212,3 +218,4 @@ hr {
 .form .button {
     margin-left: 225px;
 }
+
