@@ -53,5 +53,21 @@ def delete_snippet(request, pk):
     return redirect ('profile')
 
 def library(request):
-    snippets = Snippet.objects.all()
-    return render(request, 'core/library.html', {'snippets': snippets})
+    def library_query(query_string):
+        query_terms = query_string.split(" ")
+        db_query = Q()
+        for term in query_terms:
+            db_query = db_query | Q(title__icontains=term) | Q(language__icontains=term) | Q(code__icontains=term) | Q(description__icontains=term)
+        return db_query
+    query = request.GET.get('lib-search')
+    if query:
+        snippets = Snippet.objects.filter(library_query(query))
+    else: 
+        snippets = Snippet.objects.all()
+    context = {'snippets': snippets}
+    context['query'] = str(query)
+    return render(request, 'core/library.html', context=context)
+
+# def library(request):
+#     snippets = Snippet.objects.all()
+#     return render(request, 'core/library.html', {'snippets': snippets})
