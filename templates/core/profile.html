@@ -2,7 +2,10 @@
 {% block content %}
 
 <body>
+<div class="profile-container">
+<img class="big-avatar" src='{{request.user.avatar.url}}'>
 <h1 class="profile-name">{{request.user.username}}</h1>
+</div>
 <div class="container">
     <div class="profile-search">
         <form action="" method="GET" id="search-form">

@@ -76,6 +76,14 @@ hr {
     border: 1px solid rgb(158, 158, 158);
 }
 
+.big-avatar {
+    max-width: 100px;
+    border-radius: 50%;
+    border: 2px solid rgb(158, 158, 158);
+    margin: 2px;
+    margin-left: 10px;
+}
+
 .lib-avatar {
     max-width: 25px;
     border-radius: 50%;
@@ -119,8 +127,13 @@ hr {
     width: 20px;
 }
 
+.profile-container {
+    display: flex;
+}
+
 .profile-name {
     margin: 1rem;
+    margin-left: 5px;
     margin-bottom: 0px;
     font-size: 60px;
     font-style: italic;
