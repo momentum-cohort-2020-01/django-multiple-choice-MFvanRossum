@@ -7,4 +7,4 @@ from PIL import Image
 
 
 class User(AbstractUser):
-    avatar = models.ImageField(default='default.png')
+    avatar = models.ImageField(default='static/default-image.png')
