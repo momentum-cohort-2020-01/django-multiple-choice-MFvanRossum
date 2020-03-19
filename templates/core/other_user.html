@@ -2,10 +2,15 @@
 {% block content %}
 
 <body>
-    <h1 class="profile-name">Snip-It! Code Library</h1>
-    <h3 class="library-des">Search for snippets by title, description, <br>
-        code, or language!</h3>
-    {% for snippet in snippets %}
+    <h1 class="profile-name">{{user.username}}</h1>
+    <div class="container">
+        <div class="profile-search">
+            <form action="" method="GET" id="search-form">
+                <input type="text" name="user-search" placeholder="Search {{user.username}}&#39s snippets!">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        {% for snippet in snippets %}
         <div class="snippet-container">
             <h2 class="snippet-title">{{snippet.title}}</h2>
             <div class="code-snippet">
@@ -20,16 +25,17 @@
             </div>
             <div class="created-by">
                 Posted on: {{snippet.created_at}} by 
+                <a class="header-button" href="{% url 'profile' %}">
                 {% for user in snippet.users.all %}
-                <a class="header-button" href="{% url 'other-user' user.pk %}">
                 {{user.username}}
                 <img class="lib-avatar" src='{{user.avatar.url}}'>
-                </a>
                 {% endfor %}
+                </a>
             </div>
         <hr>
         </div>
-    {% endfor %}
-</body>
-
+        {% endfor %}
+    </div>
+    
+    </body>
 {% endblock %}

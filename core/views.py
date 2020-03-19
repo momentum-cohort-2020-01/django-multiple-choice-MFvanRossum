@@ -68,6 +68,19 @@ def library(request):
     context['query'] = str(query)
     return render(request, 'core/library.html', context=context)
 
-# def library(request):
-#     snippets = Snippet.objects.all()
-#     return render(request, 'core/library.html', {'snippets': snippets})
+def other_user(request, pk):
+    user = User.objects.get(pk=pk)
+    def other_user_query(query_string):
+        query_terms = query_string.split(" ")
+        db_query = Q()
+        for term in query_terms:
+            db_query = db_query | Q(title__icontains=term) | Q(language__icontains=term) | Q(code__icontains=term) | Q(description__icontains=term)
+        return db_query
+    query = request.GET.get('user-search')
+    if query:
+        snippets = Snippet.objects.filter(other_user_query(query), users=user.pk)
+    else:
+        snippets = Snippet.objects.filter(users=user.pk)
+    context = {'snippets': snippets, "user": user}
+    context['query'] = str(query)
+    return render(request, 'core/other_user.html', context=context)

@@ -16,6 +16,10 @@ a {
     color: black;
 }
 
+code {
+    overflow: scroll;
+}
+
 .header-button {
     color: rgb(173, 173, 173);
     text-emphasis: none;
@@ -44,7 +48,7 @@ hr {
     color: black;
     font-family: 'Fredoka One';
     font-size: 60px;
-    text-shadow: 1px 2px white;
+    text-shadow: 2px 3px white;
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: rgb(96, 103, 107);
 }
@@ -68,6 +72,12 @@ hr {
 
 .avatar {
     max-width: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(158, 158, 158);
+}
+
+.lib-avatar {
+    max-width: 25px;
     border-radius: 50%;
     border: 1px solid rgb(158, 158, 158);
 }
@@ -166,6 +176,7 @@ hr {
 
 .code-snippet {
     display: flex;
+    overflow: scroll;
 }
 
 
